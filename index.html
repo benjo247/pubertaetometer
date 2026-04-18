@@ -782,7 +782,8 @@
           await navigator.share({
             files: [file],
             title: 'Pubertätometer',
-            text: `Ich stecke zu ${document.getElementById('sc-score').textContent}% in der Pubertät 🔥 Und du? → pubertaetometer.vercel.app`
+            text: `Ich stecke zu ${document.getElementById('sc-score').textContent}% in der Pubertät 🔥 Und du?`,
+            url: 'https://pubertaetometer.vercel.app'
           });
         } else {
           // Fallback: download image
