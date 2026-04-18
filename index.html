@@ -8,6 +8,81 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <style>
+    /* SHARE BUTTON */
+    .share-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 16px;
+      border: none; border-radius: var(--radius);
+      background: linear-gradient(135deg, #ff3cac, #ff8a00);
+      color: white; font-family: 'Syne', sans-serif;
+      font-size: 16px; font-weight: 800;
+      cursor: pointer; margin-top: 12px;
+      box-shadow: 0 8px 24px rgba(255,60,172,0.3);
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
+      letter-spacing: -.2px;
+    }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,60,172,0.45); }
+    .share-btn:active { transform: scale(.97); }
+    .share-hint { text-align: center; font-size: 12px; color: rgba(255,255,255,.25); margin-top: 8px; }
+
+    /* HIDDEN STORY CARD (rendered to image) */
+    #story-card-render {
+      position: fixed; left: -9999px; top: 0;
+      width: 400px; height: 710px;
+      background: #0a0a12;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 40px 32px; gap: 10px;
+      font-family: 'Syne', sans-serif;
+      overflow: hidden;
+    }
+    #story-card-render .sc-blob1 {
+      position: absolute; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,60,172,0.4), transparent 70%);
+      top: -60px; left: -60px;
+    }
+    #story-card-render .sc-blob2 {
+      position: absolute; width: 240px; height: 240px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,245,212,0.3), transparent 70%);
+      bottom: -40px; right: -40px;
+    }
+    #story-card-render .sc-logo {
+      position: absolute; top: 28px;
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(255,255,255,.35);
+      font-family: 'Syne', sans-serif;
+    }
+    #story-card-render .sc-emoji { font-size: 80px; line-height: 1; margin-bottom: 4px; }
+    #story-card-render .sc-score {
+      font-size: 96px; font-weight: 800; line-height: 1;
+      color: #ff3cac; font-family: 'Syne', sans-serif;
+    }
+    #story-card-render .sc-level-label {
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.4); font-family: 'Syne', sans-serif;
+    }
+    #story-card-render .sc-bar-wrap {
+      width: 70%; height: 8px;
+      background: rgba(255,255,255,.1); border-radius: 100px; overflow: hidden; margin: 4px 0;
+    }
+    #story-card-render .sc-bar {
+      height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, #ff3cac, #ff8a00);
+    }
+    #story-card-render .sc-title {
+      font-size: 22px; font-weight: 800; color: white;
+      text-align: center; line-height: 1.3; margin: 6px 0;
+      font-family: 'Syne', sans-serif;
+    }
+    #story-card-render .sc-cta {
+      position: absolute; bottom: 28px;
+      font-size: 13px; font-weight: 700; letter-spacing: .5px;
+      color: rgba(255,255,255,.4); font-family: 'Syne', sans-serif; text-align: center;
+    }
+    #story-card-render .sc-cta span { color: #00f5d4; }
+  </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -443,6 +518,21 @@
     <div class="result-title" id="result-title">Ergebnis</div>
     <div class="result-text" id="result-text">...</div>
     <button class="again-btn" onclick="resetAll()" id="again-btn">🔄 Nochmal checken!</button>
+    <button class="share-btn" id="share-btn" onclick="shareResult()">↗ Ergebnis teilen</button>
+    <div class="share-hint" id="share-hint">WhatsApp, Instagram, iMessage & mehr</div>
+  </div>
+
+  <!-- Hidden story card for image generation -->
+  <div id="story-card-render">
+    <div class="sc-blob1"></div>
+    <div class="sc-blob2"></div>
+    <div class="sc-logo">Pubertätometer™</div>
+    <div class="sc-emoji" id="sc-emoji">😤</div>
+    <div class="sc-score" id="sc-score">73</div>
+    <div class="sc-level-label" id="sc-level-label">Pubertäts-Level</div>
+    <div class="sc-bar-wrap"><div class="sc-bar" id="sc-bar" style="width:73%"></div></div>
+    <div class="sc-title" id="sc-title">Fortgeschrittener Pubertäler! 🔥</div>
+    <div class="sc-cta">Und du? → <span>pubertaetometer.vercel.app</span></div>
   </div>
 
   <div class="footer" id="footer-text">Rein wissenschaftlich... naja, fast 😅<br>© 2025 Pubertätometer™ – All hormones reserved.</div>
@@ -618,6 +708,18 @@
     const rc = document.getElementById('result-card');
     rc.classList.toggle('high-score', score >= 90);
 
+    // update story card
+    document.getElementById('sc-emoji').textContent = range.emoji;
+    document.getElementById('sc-score').textContent = score;
+    document.getElementById('sc-title').textContent = range.title;
+    document.getElementById('sc-bar').style.width = score + '%';
+    document.getElementById('sc-level-label').textContent = t.labelPubertyLevel;
+    // gender color on story card score
+    document.getElementById('sc-score').style.color = gender === 'boy' ? '#3a86ff' : '#ff3cac';
+    document.getElementById('sc-bar').style.background = gender === 'boy'
+      ? 'linear-gradient(90deg,#3a86ff,#00f5d4)'
+      : 'linear-gradient(90deg,#ff3cac,#ff8a00)';
+
     // show
     rc.style.display = 'block';
     requestAnimationFrame(() => {
@@ -664,6 +766,37 @@
         document.body.appendChild(p);
         setTimeout(() => p.remove(), 1800);
       }, i * 80);
+    }
+  }
+
+  async function shareResult() {
+    const btn = document.getElementById('share-btn');
+    btn.textContent = '⏳ Wird vorbereitet...';
+    btn.disabled = true;
+    try {
+      const card = document.getElementById('story-card-render');
+      const canvas = await html2canvas(card, { scale: 2, useCORS: true, backgroundColor: '#0a0a12' });
+      canvas.toBlob(async (blob) => {
+        const file = new File([blob], 'pubertaetometer.png', { type: 'image/png' });
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: 'Pubertätometer',
+            text: `Ich stecke zu ${document.getElementById('sc-score').textContent}% in der Pubertät 🔥 Und du? → pubertaetometer.vercel.app`
+          });
+        } else {
+          // Fallback: download image
+          const a = document.createElement('a');
+          a.href = canvas.toDataURL('image/png');
+          a.download = 'pubertaetometer.png';
+          a.click();
+        }
+        btn.textContent = '↗ Ergebnis teilen';
+        btn.disabled = false;
+      }, 'image/png');
+    } catch(e) {
+      btn.textContent = '↗ Ergebnis teilen';
+      btn.disabled = false;
     }
   }
 
