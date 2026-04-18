@@ -118,6 +118,9 @@
       background-clip: text;
       line-height: 1.1;
       letter-spacing: -1px;
+      hyphens: manual;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .header p {
       color: var(--muted);
@@ -462,7 +465,7 @@
 
   const T = {
     de: {
-      title: 'Pubertätometer',
+      title: 'Pubertät-<br>ometer',
       subtitle: 'Wie tief steckst du im Pubertyrama? Finde es heraus – wenn du dich traust!',
       labelGender: 'Ich bin ein ...',
       labelBoy: 'Junge',
@@ -538,7 +541,7 @@
 
   function updateUI() {
     const t = T[lang];
-    document.getElementById('title').textContent = t.title;
+    document.getElementById('title').innerHTML = t.title;
     document.getElementById('subtitle').textContent = t.subtitle;
     document.getElementById('label-gender').textContent = t.labelGender;
     document.getElementById('label-boy').textContent = t.labelBoy;
