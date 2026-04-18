@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pubertätometer 🔥</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a12;
+      --card: #13131f;
+      --card2: #1a1a2e;
+      --accent1: #ff3cac;
+      --accent2: #784ba0;
+      --accent3: #2b86c5;
+      --neon: #00f5d4;
+      --boy1: #3a86ff;
+      --boy2: #0077b6;
+      --girl1: #ff3cac;
+      --girl2: #d62598;
+      --text: #f0f0f8;
+      --muted: #888aaa;
+      --radius: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px 16px 60px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background blobs */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, var(--accent1), transparent 70%);
+      top: -100px; left: -100px;
+      animation: blobA 12s ease-in-out infinite alternate;
+    }
+    body::after {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, var(--accent3), transparent 70%);
+      bottom: -80px; right: -80px;
+      animation: blobB 10s ease-in-out infinite alternate;
+    }
+    @keyframes blobA { to { transform: translate(60px, 80px) scale(1.1); } }
+    @keyframes blobB { to { transform: translate(-40px, -60px) scale(1.15); } }
+
+    .everything { position: relative; z-index: 1; width: 100%; max-width: 480px; }
+
+    /* LANG TOGGLE */
+    .lang-toggle {
+      display: flex; gap: 8px;
+      justify-content: flex-end;
+      margin-bottom: 24px;
+      margin-top: 8px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid var(--muted);
+      color: var(--muted);
+      border-radius: 50px;
+      padding: 5px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+      letter-spacing: .5px;
+    }
+    .lang-btn.active {
+      border-color: var(--neon);
+      color: var(--neon);
+      background: rgba(0,245,212,.08);
+    }
+
+    /* HEADER */
+    .header { text-align: center; margin-bottom: 36px; }
+    .header .emoji-row {
+      font-size: 42px;
+      line-height: 1;
+      margin-bottom: 12px;
+      display: block;
+      animation: floatY 3s ease-in-out infinite;
+    }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+    .header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 8vw, 3.4rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent1) 0%, #ff8a00 50%, var(--neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+    .header p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      border: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* GENDER SELECT */
+    .gender-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .gender-btn {
+      background: var(--card2);
+      border: 2px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 22px 12px 18px;
+      cursor: pointer;
+      transition: all .25s cubic-bezier(.34,1.56,.64,1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .gender-btn .big-icon {
+      font-size: 44px;
+      transition: transform .3s;
+    }
+    .gender-btn:hover { transform: translateY(-3px); }
+    .gender-btn.selected-boy {
+      border-color: var(--boy1);
+      background: rgba(58,134,255,.12);
+      box-shadow: 0 0 20px rgba(58,134,255,.25), inset 0 0 20px rgba(58,134,255,.06);
+    }
+    .gender-btn.selected-boy .big-icon { transform: scale(1.15) rotate(-5deg); }
+    .gender-btn.selected-girl {
+      border-color: var(--girl1);
+      background: rgba(255,60,172,.12);
+      box-shadow: 0 0 20px rgba(255,60,172,.25), inset 0 0 20px rgba(255,60,172,.06);
+    }
+    .gender-btn.selected-girl .big-icon { transform: scale(1.15) rotate(5deg); }
+
+    /* CHECK BUTTON */
+    .check-section { margin-top: 8px; }
+    .check-btn {
+      width: 100%;
+      padding: 20px;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
+      background: linear-gradient(135deg, var(--accent1), #ff8a00);
+      color: white;
+      letter-spacing: -.3px;
+      box-shadow: 0 8px 30px rgba(255,60,172,.35);
+    }
+    .check-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.15), transparent);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .check-btn:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 14px 40px rgba(255,60,172,.45); }
+    .check-btn:hover::before { opacity: 1; }
+    .check-btn:active { transform: scale(.97); }
+    .check-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .check-btn .btn-inner { display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .check-btn .spin { display: none; animation: spin .7s linear infinite; }
+    .check-btn.loading .spin { display: inline-block; }
+    .check-btn.loading .btn-label { opacity: .6; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* RESULT */
+    .result-card {
+      display: none;
+      opacity: 0;
+      transform: translateY(30px) scale(.97);
+      transition: all .5s cubic-bezier(.34,1.56,.64,1);
+    }
+    .result-card.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* METER */
+    .meter-wrap { margin: 8px 0 20px; }
+    .meter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .meter-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .meter-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--accent1), #ff8a00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .meter-value.boy-color {
+      background: linear-gradient(135deg, var(--boy1), var(--neon));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .meter-value.girl-color {
+      background: linear-gradient(135deg, var(--girl1), #ff8a00);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .meter-track {
+      width: 100%;
+      height: 12px;
+      background: rgba(255,255,255,.08);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 100px;
+      transition: width 1.2s cubic-bezier(.25,.46,.45,.94);
+    }
+    .meter-fill.boy-fill { background: linear-gradient(90deg, var(--boy1), var(--neon)); }
+    .meter-fill.girl-fill { background: linear-gradient(90deg, var(--girl1), #ff8a00); }
+
+    /* LEVEL BADGE */
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .level-1 { background: rgba(0,245,212,.15); color: var(--neon); border: 1px solid rgba(0,245,212,.3); }
+    .level-2 { background: rgba(58,134,255,.15); color: var(--boy1); border: 1px solid rgba(58,134,255,.3); }
+    .level-3 { background: rgba(255,138,0,.15); color: #ff8a00; border: 1px solid rgba(255,138,0,.3); }
+    .level-4 { background: rgba(255,60,172,.15); color: var(--accent1); border: 1px solid rgba(255,60,172,.3); }
+    .level-5 { background: rgba(214,37,152,.2); color: #ff3cac; border: 1px solid rgba(214,37,152,.4); box-shadow: 0 0 12px rgba(255,60,172,.2); }
+
+    .result-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.4rem, 5vw, 1.9rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .result-text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #c8c8e0;
+    }
+    .result-emoji-big {
+      font-size: 56px;
+      display: block;
+      text-align: center;
+      margin: 16px 0 12px;
+      animation: popIn .5s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes popIn { from{transform:scale(0) rotate(-15deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
+
+    /* AGAIN BUTTON */
+    .again-btn {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 16px;
+      border: 2px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .again-btn:hover {
+      border-color: var(--neon);
+      color: var(--neon);
+      background: rgba(0,245,212,.06);
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 13px;
+      color: rgba(136,138,170,.5);
+      line-height: 1.5;
+    }
+
+    /* FUN PARTICLES */
+    .particle {
+      position: fixed;
+      pointer-events: none;
+      font-size: 22px;
+      z-index: 999;
+      animation: particleFly 1.4s ease-out forwards;
+    }
+    @keyframes particleFly {
+      0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(-180px) scale(.3) rotate(360deg); }
+    }
+
+    /* CONFETTI shimmer on high score */
+    @keyframes shimmer {
+      0%,100% { box-shadow: 0 0 20px rgba(255,60,172,.3); }
+      50% { box-shadow: 0 0 50px rgba(255,60,172,.7), 0 0 100px rgba(255,138,0,.3); }
+    }
+    .high-score { animation: shimmer 1.5s ease-in-out infinite; }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,.06);
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="everything">
+
+  <!-- LANG TOGGLE -->
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('de')" id="btn-de">🇩🇪 DE</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">🇬🇧 EN</button>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="emoji-row">🌡️✨🔥</span>
+    <h1 id="title">Pubertätometer</h1>
+    <p id="subtitle">Wie tief steckst du im Pubertyrama? Finde es heraus – wenn du dich traust!</p>
+  </div>
+
+  <!-- GENDER CARD -->
+  <div class="card" id="gender-card">
+    <div class="section-label" id="label-gender">Ich bin ein ...</div>
+    <div class="gender-grid">
+      <button class="gender-btn" id="btn-boy" onclick="selectGender('boy')">
+        <span class="big-icon">🧑</span>
+        <span id="label-boy">Junge</span>
+      </button>
+      <button class="gender-btn" id="btn-girl" onclick="selectGender('girl')">
+        <span class="big-icon">👧</span>
+        <span id="label-girl">Mädchen</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CHECK BUTTON -->
+  <div class="card check-section" id="check-card">
+    <button class="check-btn" id="check-btn" onclick="doCheck()" disabled>
+      <div class="btn-inner">
+        <span class="spin">⚙️</span>
+        <span class="btn-label" id="btn-label">🔍 Puberty Check starten!</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- RESULT CARD -->
+  <div class="card result-card" id="result-card">
+    <div id="level-badge" class="level-badge level-3"><span>⚡</span><span id="level-name">Level</span></div>
+    <div class="meter-wrap">
+      <div class="meter-header">
+        <span class="meter-label" id="label-puberty-level">Pubertäts-Level</span>
+        <span class="meter-value" id="score-display">0</span>
+      </div>
+      <div class="meter-track">
+        <div class="meter-fill" id="meter-fill"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <span class="result-emoji-big" id="result-emoji">🤔</span>
+    <div class="result-title" id="result-title">Ergebnis</div>
+    <div class="result-text" id="result-text">...</div>
+    <button class="again-btn" onclick="resetAll()" id="again-btn">🔄 Nochmal checken!</button>
+  </div>
+
+  <div class="footer" id="footer-text">Rein wissenschaftlich... naja, fast 😅<br>© 2025 Pubertätometer™ – All hormones reserved.</div>
+</div>
+
+<script>
+  let lang = 'de';
+  let gender = null;
+
+  const T = {
+    de: {
+      title: 'Pubertätometer',
+      subtitle: 'Wie tief steckst du im Pubertyrama? Finde es heraus – wenn du dich traust!',
+      labelGender: 'Ich bin ein ...',
+      labelBoy: 'Junge',
+      labelGirl: 'Mädchen',
+      btnLabel: '🔍 Puberty Check starten!',
+      btnLoading: '⚙️ Scanne Hormone...',
+      labelPubertyLevel: 'Pubertäts-Level',
+      againBtn: '🔄 Nochmal checken!',
+      footer: 'Rein wissenschaftlich... naja, fast 😅<br>© 2025 Pubertätometer™ – All hormones reserved.',
+      levels: ['Baby-Modus 👶','Anfänger 🌱','Mittelklasse ⚡','Fast-Pro 🔥','Ultra-Pubertät 🚀'],
+      boy: {
+        ranges: [
+          { max: 15, emoji: '😴', title: 'Noch voll im Kinder-Modus!', text: 'Deine Hormone schlafen noch tief und fest. Du genießt das Leben sorglos – kein Pickel, keine Stimmbruch-Katastrophen. Genieß diese ruhige Zeit, denn bald kommt der Sturm! 😂 Du bist wie eine Rakete, die noch auf dem Startpad steht – Zündung folgt bald!' },
+          { max: 30, emoji: '🌱', title: 'Die ersten Anzeichen!', text: 'Irgendwie ist was anders… Ein Haar hier, ein Pickel dort. Deine Stimme macht manchmal komische Sachen – Hallo Stimmbruch! Dein Körper lädt gerade das größte Update deines Lebens herunter. Geduld, es wird episch!' },
+          { max: 50, emoji: '🤔', title: 'Mittendrin im Chaos!', text: 'Willkommen im Club der Verwirrung! Heute ein Held, morgen ein Weichei. Dein Gesicht produziert Pickel im Industriemaßstab und die Haare wachsen überall. Aber hey – du wirst gerade richtig cool! Dein Körper arbeitet auf Hochtouren, das ist ein Feature, kein Bug. 💪' },
+          { max: 75, emoji: '😤', title: 'Fortgeschrittener Pubertäler!', text: 'Du bist ein echter Pubertäts-Veteran! Deine Stimme ist inzwischen meistens stabil – außer wenn du aufgeregt bist 😅. Sport macht dir Spaß (oder auch nicht), aber du wirst merklich stärker. Die Mädchen-Sache wird langsam interessanter... Und deine Eltern verstehen dich mal wieder überhaupt nicht.' },
+          { max: 90, emoji: '🔥', title: 'Fast am Ziel!', text: 'Krass, du hast die Pubertät fast hinter dir! Du wächst in dich hinein und wirst zur besten Version deiner selbst. Deine Freunde respektieren dich, du hast deinen Stil gefunden – und manchmal rasierst du dich sogar! Du bist auf dem Weg, ein echter Kerl zu werden. Stolz auf dich! 🏆' },
+          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTÄT AKTIVIERT!', text: 'LEGEND! Du hast Level 100 erreicht! Deine Hormone arbeiten auf Overdrive und du bist ein absolutes Kraft-Paket voller Energie, Gefühle und wilder Ideen. Die Welt gehört dir! Du bist offiziell der Pubertäts-Champion 🏅. Deine Zukunft ist so hell, du brauchst eine Sonnenbrille. LETS GOOO! 🎉' }
+        ]
+      },
+      girl: {
+        ranges: [
+          { max: 15, emoji: '🌸', title: 'Noch im Prinzessinnen-Modus!', text: 'Deine Hormone machen erstmal Siesta. Du lebst noch sorglos in deiner Bubble – kein Drama, keine Achterbahn-Gefühle. Ruhig wie ein See... aber bald kommt der Wind! Genieß diese ruhige Phase, du kleines Strahlemädchen! 💫' },
+          { max: 30, emoji: '🌺', title: 'Die Verwandlung beginnt!', text: 'Irgendwas passiert da gerade... Dein Körper tippt dir auf die Schulter und sagt: "Hey, wir starten jetzt!" Manchmal bist du super happy, manchmal mega genervt – von allem. Das ist völlig normal! Du wirst gerade zu etwas ganz Besonderem! 🌟' },
+          { max: 50, emoji: '🎢', title: 'Achterbahn-Modus aktiv!', text: 'Ein Moment weinst du bei einem Werbeclip, im nächsten lachst du über alles. Willkommen bei der wildesten Achterbahn, die kein Freizeitpark der Welt hat! Dein Körper macht gerade das komplexeste Upgrade ever. Deine Gefühle sind wie ein Regenbogen – intensiv, bunt und wunderschön! 🌈' },
+          { max: 75, emoji: '💅', title: 'Fortgeschrittene Pubertierende!', text: 'Du checkst deinen Style, weißt was du willst und deine Meinung interessiert dich mehr als die deiner Eltern 😄. Friendships werden alles für dich und du entwickelst deine eigene Superkraft-Persönlichkeit. Deine Crew hält zusammen und du bist auf dem Weg, richtig abzurocken! 🎶' },
+          { max: 90, emoji: '✨', title: 'Fast vollständig verwandelt!', text: 'Wow, du hast die wilde Phase fast gemeistert! Du weißt wer du bist, was du willst und du kannst deine Gefühle schon viel besser steuern. Deine Freundschaften sind tief und bedeutungsvoll. Du bist dabei, zur stärksten Version von dir selbst zu werden. Die Welt ist vorbereitet – bist du es? 👑' },
+          { max: 100, emoji: '🦋', title: 'KOMPLETTE VERWANDLUNG!', text: 'WOAH! Level 100! Du bist ein Schmetterling, der gerade aus seiner Puppe schlüpft! 🦋 Du hast die Pubertät gemeistert wie eine absolute Queen! Deine Energie, dein Selbstbewusstsein, deine Persönlichkeit – alles on point! Die Welt wartet auf dich und du bist mehr als bereit. GO GET IT, QUEEN! 👑🎉' }
+        ]
+      }
+    },
+    en: {
+      title: 'Puberty-Meter',
+      subtitle: 'How deep in puberty are you? Find out – if you dare!',
+      labelGender: 'I am a ...',
+      labelBoy: 'Boy',
+      labelGirl: 'Girl',
+      btnLabel: '🔍 Start Puberty Check!',
+      btnLoading: '⚙️ Scanning hormones...',
+      labelPubertyLevel: 'Puberty Level',
+      againBtn: '🔄 Check again!',
+      footer: 'Totally scientific... well, almost 😅<br>© 2025 Puberty-Meter™ – All hormones reserved.',
+      levels: ['Baby Mode 👶','Beginner 🌱','Mid-Tier ⚡','Almost Pro 🔥','Ultra-Puberty 🚀'],
+      boy: {
+        ranges: [
+          { max: 15, emoji: '😴', title: 'Still in full kid mode!', text: 'Your hormones are sleeping in late. You\'re living life carefree – no pimples, no voice-crack disasters. Enjoy this quiet time, because the storm is coming! 😂 You\'re like a rocket still on the launchpad – ignition coming soon!' },
+          { max: 30, emoji: '🌱', title: 'First signs detected!', text: 'Something feels different… A hair here, a pimple there. Your voice does weird things sometimes – hello, voice crack! Your body is downloading the biggest update of your life. Be patient, it\'s going to be epic!' },
+          { max: 50, emoji: '🤔', title: 'Right in the middle of chaos!', text: 'Welcome to the club of confusion! A hero today, a mess tomorrow. Your face is producing pimples at industrial scale and hair is growing everywhere. But hey – you\'re getting seriously cool! Your body is working overtime, and that\'s a feature, not a bug. 💪' },
+          { max: 75, emoji: '😤', title: 'Advanced puberty veteran!', text: 'You\'re a true puberty veteran! Your voice is mostly stable now – except when you get excited 😅. Sports are fun (or not), but you\'re getting noticeably stronger. The girl thing is getting more interesting... And your parents just don\'t understand you. Classic.' },
+          { max: 90, emoji: '🔥', title: 'Almost at the finish line!', text: 'Wow, you\'re almost done with puberty! You\'re growing into yourself and becoming the best version of you. Your friends respect you, you\'ve found your style – and sometimes you even shave! You\'re on your way to becoming a real dude. Proud of you! 🏆' },
+          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTY ACTIVATED!', text: 'LEGEND! You hit Level 100! Your hormones are on overdrive and you\'re an absolute powerhouse of energy, feelings and wild ideas. The world is yours! You\'re officially the Puberty Champion 🏅. Your future is so bright you need shades. LETS GOOO! 🎉' }
+        ]
+      },
+      girl: {
+        ranges: [
+          { max: 15, emoji: '🌸', title: 'Still in princess mode!', text: 'Your hormones are taking a little siesta. You\'re living worry-free in your bubble – no drama, no emotional rollercoasters. Calm as a lake... but the wind is coming! Enjoy this peaceful phase, you little ray of sunshine! 💫' },
+          { max: 30, emoji: '🌺', title: 'The transformation begins!', text: 'Something is happening... Your body is tapping you on the shoulder saying: "Hey, we\'re starting now!" Sometimes you feel super happy, sometimes mega annoyed – by everything. That\'s totally normal! You\'re becoming something truly special! 🌟' },
+          { max: 50, emoji: '🎢', title: 'Rollercoaster mode activated!', text: 'One minute you\'re crying at a commercial, the next you\'re laughing at everything. Welcome to the wildest rollercoaster no theme park could ever build! Your body is doing the most complex upgrade ever. Your feelings are like a rainbow – intense, colorful and absolutely beautiful! 🌈' },
+          { max: 75, emoji: '💅', title: 'Advanced puberty player!', text: 'You\'re checking your style, you know what you want, and your own opinion matters more than your parents\' 😄. Friendships are becoming everything to you and you\'re developing your own superpower personality. Your crew sticks together and you\'re on your way to absolutely slaying! 🎶' },
+          { max: 90, emoji: '✨', title: 'Almost fully transformed!', text: 'Wow, you\'ve almost mastered the wild phase! You know who you are, what you want, and you can manage your feelings so much better now. Your friendships are deep and meaningful. You\'re becoming the strongest version of yourself. The world is prepared – are you? 👑' },
+          { max: 100, emoji: '🦋', title: 'COMPLETE TRANSFORMATION!', text: 'WOAH! Level 100! You\'re a butterfly emerging from its cocoon! 🦋 You\'ve conquered puberty like an absolute Queen! Your energy, your confidence, your personality – all on point! The world is waiting for you and you are more than ready. GO GET IT, QUEEN! 👑🎉' }
+        ]
+      }
+    }
+  };
+
+  function setLang(l) {
+    lang = l;
+    document.getElementById('btn-de').classList.toggle('active', l === 'de');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    updateUI();
+  }
+
+  function updateUI() {
+    const t = T[lang];
+    document.getElementById('title').textContent = t.title;
+    document.getElementById('subtitle').textContent = t.subtitle;
+    document.getElementById('label-gender').textContent = t.labelGender;
+    document.getElementById('label-boy').textContent = t.labelBoy;
+    document.getElementById('label-girl').textContent = t.labelGirl;
+    document.getElementById('btn-label').textContent = t.btnLabel;
+    document.getElementById('again-btn').textContent = t.againBtn;
+    document.getElementById('label-puberty-level').textContent = t.labelPubertyLevel;
+    document.getElementById('footer-text').innerHTML = t.footer;
+  }
+
+  function selectGender(g) {
+    gender = g;
+    document.getElementById('btn-boy').className = 'gender-btn' + (g === 'boy' ? ' selected-boy' : '');
+    document.getElementById('btn-girl').className = 'gender-btn' + (g === 'girl' ? ' selected-girl' : '');
+    document.getElementById('check-btn').disabled = false;
+  }
+
+  function getLevelIndex(score) {
+    if (score <= 15) return 0;
+    if (score <= 30) return 1;
+    if (score <= 60) return 2;
+    if (score <= 80) return 3;
+    return 4;
+  }
+
+  function getRange(score, gender) {
+    const ranges = T[lang][gender].ranges;
+    for (const r of ranges) { if (score <= r.max) return r; }
+    return ranges[ranges.length - 1];
+  }
+
+  function doCheck() {
+    const btn = document.getElementById('check-btn');
+    btn.disabled = true;
+    btn.classList.add('loading');
+    document.getElementById('btn-label').textContent = T[lang].btnLoading;
+    document.getElementById('result-card').classList.remove('visible');
+    document.getElementById('result-card').style.display = 'none';
+
+    // dramatic pause
+    setTimeout(() => {
+      const score = Math.floor(Math.random() * 100) + 1;
+      showResult(score);
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      document.getElementById('btn-label').textContent = T[lang].btnLabel;
+    }, 1800);
+  }
+
+  function showResult(score) {
+    const t = T[lang];
+    const range = getRange(score, gender);
+    const levelIdx = getLevelIndex(score);
+
+    // set values
+    document.getElementById('score-display').textContent = score;
+    document.getElementById('result-emoji').textContent = range.emoji;
+    document.getElementById('result-title').textContent = range.title;
+    document.getElementById('result-text').textContent = range.text;
+    document.getElementById('level-name').textContent = t.levels[levelIdx];
+
+    // level badge
+    const badge = document.getElementById('level-badge');
+    badge.className = 'level-badge level-' + (levelIdx + 1);
+
+    // color by gender
+    const mv = document.getElementById('score-display');
+    const mf = document.getElementById('meter-fill');
+    mv.className = 'meter-value ' + (gender === 'boy' ? 'boy-color' : 'girl-color');
+    mf.className = 'meter-fill ' + (gender === 'boy' ? 'boy-fill' : 'girl-fill');
+
+    // high score shimmer
+    const rc = document.getElementById('result-card');
+    rc.classList.toggle('high-score', score >= 90);
+
+    // show
+    rc.style.display = 'block';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        rc.classList.add('visible');
+        // animate meter
+        setTimeout(() => {
+          document.getElementById('meter-fill').style.width = score + '%';
+        }, 200);
+        // animate score counter
+        animateCounter(score);
+        // scroll to result
+        setTimeout(() => rc.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+        // particles
+        if (score >= 70) spawnParticles(score);
+      });
+    });
+  }
+
+  function animateCounter(target) {
+    const el = document.getElementById('score-display');
+    let current = 0;
+    const step = target / 40;
+    const interval = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = Math.round(current);
+      if (current >= target) clearInterval(interval);
+    }, 30);
+  }
+
+  function spawnParticles(score) {
+    const emojis = score >= 90
+      ? ['🎉','🔥','🚀','⭐','✨','💥','🏆','👑']
+      : ['⚡','🌟','✨','🎯','💫','🔥'];
+    const count = score >= 90 ? 14 : 7;
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        p.style.left = (20 + Math.random() * 60) + 'vw';
+        p.style.top = (50 + Math.random() * 30) + 'vh';
+        p.style.animationDelay = Math.random() * 0.3 + 's';
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1800);
+      }, i * 80);
+    }
+  }
+
+  function resetAll() {
+    gender = null;
+    document.getElementById('btn-boy').className = 'gender-btn';
+    document.getElementById('btn-girl').className = 'gender-btn';
+    document.getElementById('check-btn').disabled = true;
+    const rc = document.getElementById('result-card');
+    rc.classList.remove('visible', 'high-score');
+    rc.style.display = 'none';
+    document.getElementById('meter-fill').style.width = '0%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  updateUI();
+</script>
+</body>
+</html>
