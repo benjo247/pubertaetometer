@@ -375,9 +375,14 @@
     }
     .level-1 { background: rgba(0,245,212,.15); color: var(--neon); border: 1px solid rgba(0,245,212,.3); }
     .level-2 { background: rgba(58,134,255,.15); color: var(--boy1); border: 1px solid rgba(58,134,255,.3); }
-    .level-3 { background: rgba(255,138,0,.15); color: #ff8a00; border: 1px solid rgba(255,138,0,.3); }
-    .level-4 { background: rgba(255,60,172,.15); color: var(--accent1); border: 1px solid rgba(255,60,172,.3); }
-    .level-5 { background: rgba(214,37,152,.2); color: #ff3cac; border: 1px solid rgba(214,37,152,.4); box-shadow: 0 0 12px rgba(255,60,172,.2); }
+    .level-3 { background: rgba(100,200,100,.15); color: #64c864; border: 1px solid rgba(100,200,100,.3); }
+    .level-4 { background: rgba(255,220,0,.15); color: #ffdc00; border: 1px solid rgba(255,220,0,.3); }
+    .level-5 { background: rgba(255,165,0,.15); color: #ffa500; border: 1px solid rgba(255,165,0,.3); }
+    .level-6 { background: rgba(255,138,0,.15); color: #ff8a00; border: 1px solid rgba(255,138,0,.3); }
+    .level-7 { background: rgba(255,80,80,.15); color: #ff5050; border: 1px solid rgba(255,80,80,.3); }
+    .level-8 { background: rgba(255,60,172,.15); color: var(--accent1); border: 1px solid rgba(255,60,172,.3); }
+    .level-9 { background: rgba(200,0,200,.15); color: #c800c8; border: 1px solid rgba(200,0,200,.3); }
+    .level-10 { background: rgba(214,37,152,.2); color: #ff3cac; border: 1px solid rgba(214,37,152,.4); box-shadow: 0 0 12px rgba(255,60,172,.2); }
 
     .result-title {
       font-family: 'Syne', sans-serif;
@@ -566,25 +571,33 @@
       labelPubertyLevel: 'Pubertäts-Level',
       againBtn: '🔄 Nochmal checken!',
       footer: 'Rein wissenschaftlich... naja, fast 😅<br>© 2026 Pubertätometer™ – All hormones reserved.',
-      levels: ['Baby-Modus 👶','Anfänger 🌱','Mittelklasse ⚡','Fast-Pro 🔥','Ultra-Pubertät 🚀'],
+      levels: ['Embryo 🥚','Baby-Modus 👶','Anfänger 🌱','Aufwärmen 🌤️','Mittendrin ⚡','Chaos-Pro 🔥','Veteran 😤','Fast durch 🏁','Endspurt 💨','ULTRA 🚀'],
       boy: {
         ranges: [
-          { max: 15, emoji: '😴', title: 'Noch voll im Kinder-Modus!', text: 'Deine Hormone schlafen noch tief und fest. Du genießt das Leben sorglos – kein Pickel, keine Stimmbruch-Katastrophen. Genieß diese ruhige Zeit, denn bald kommt der Sturm! 😂 Du bist wie eine Rakete, die noch auf dem Startpad steht – Zündung folgt bald!' },
-          { max: 30, emoji: '🌱', title: 'Die ersten Anzeichen!', text: 'Irgendwie ist was anders… Ein Haar hier, ein Pickel dort. Deine Stimme macht manchmal komische Sachen – Hallo Stimmbruch! Dein Körper lädt gerade das größte Update deines Lebens herunter. Geduld, es wird episch!' },
-          { max: 50, emoji: '🤔', title: 'Mittendrin im Chaos!', text: 'Willkommen im Club der Verwirrung! Heute ein Held, morgen ein Weichei. Dein Gesicht produziert Pickel im Industriemaßstab und die Haare wachsen überall. Aber hey – du wirst gerade richtig cool! Dein Körper arbeitet auf Hochtouren, das ist ein Feature, kein Bug. 💪' },
-          { max: 75, emoji: '😤', title: 'Fortgeschrittener Pubertäler!', text: 'Du bist ein echter Pubertäts-Veteran! Deine Stimme ist inzwischen meistens stabil – außer wenn du aufgeregt bist 😅. Sport macht dir Spaß (oder auch nicht), aber du wirst merklich stärker. Die Mädchen-Sache wird langsam interessanter... Und deine Eltern verstehen dich mal wieder überhaupt nicht.' },
-          { max: 90, emoji: '🔥', title: 'Fast am Ziel!', text: 'Krass, du hast die Pubertät fast hinter dir! Du wächst in dich hinein und wirst zur besten Version deiner selbst. Deine Freunde respektieren dich, du hast deinen Stil gefunden – und manchmal rasierst du dich sogar! Du bist auf dem Weg, ein echter Kerl zu werden. Stolz auf dich! 🏆' },
-          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTÄT AKTIVIERT!', text: 'LEGEND! Du hast Level 100 erreicht! Deine Hormone arbeiten auf Overdrive und du bist ein absolutes Kraft-Paket voller Energie, Gefühle und wilder Ideen. Die Welt gehört dir! Du bist offiziell der Pubertäts-Champion 🏅. Deine Zukunft ist so hell, du brauchst eine Sonnenbrille. LETS GOOO! 🎉' }
+          { max: 10, emoji: '😴', title: 'Pubertät? Was ist das?', text: 'Deine Hormone schlafen noch so tief, die brauchen einen Wecker. Kein Pickel, kein Stimmbruch, kein Drama – du lebst noch im reinsten Paradies! Genieß es solange du kannst, denn bald tippt dir die Pubertät auf die Schulter und sagt: "Surprise!" 😂' },
+          { max: 20, emoji: '🥱', title: 'Noch fast komplette Ruhe!', text: 'Da rührt sich was... aber noch sehr zaghaft. Vielleicht ein einzelnes Barthaar? Oder war das ein Krümel? Deine Hormone sind gerade dabei, sich warm zu laufen. Betrachte das als die Ruhe vor dem Sturm – und der Sturm wird episch! ⚡' },
+          { max: 30, emoji: '🌱', title: 'Die Maschine startet hoch!', text: 'Houston, wir haben erste Signale! Ein Pickel hier, ein komisches Körpergefühl dort. Deine Stimme macht ab und zu Sachen die sie gestern noch nicht gemacht hat. Das ist kein Fehler – das ist das größte Software-Update deines Lebens! Patch Notes folgen. 🔧' },
+          { max: 40, emoji: '🤨', title: 'Spürbar im Wandel!', text: 'Jetzt geht\'s richtig los! Dein Körper wächst schneller als deine Hosen mithalten können. Der Stimmbruch ist dein ständiger Begleiter – mal tief wie ein DJ, mal hoch wie eine Maus. Deine Freunde sind genauso verwirrt wie du. Zusammen schafft ihr das! 💪' },
+          { max: 50, emoji: '🤯', title: 'Mitten im Sturm!', text: 'Willkommen im Epizentrum der Pubertät! Dein Gesicht ist eine Pickel-Landschaft, du schwitzt plötzlich bei nichts und der Rasierer wartet schon in der Schublade. Aber weißt du was? Du wächst gerade zu einem echten Kerl heran. Das ist kein Chaos – das ist Transformation! 🦋' },
+          { max: 60, emoji: '😤', title: 'Fortgeschrittener Pubertäler!', text: 'Du bist jetzt ein echter Insider! Deine Stimme wird stabiler, deine Muskeln sichtbarer und dein Style entwickelt sich. Manchmal willst du deine Eltern an die Wand schreien – völlig normal. Manchmal bist du der Coolste im Raum – auch normal. Du navigierst das alles erstaunlich gut! 🎯' },
+          { max: 70, emoji: '🧠', title: 'Pubertäts-Veteran!', text: 'Respekt! Du kennst die Regeln des Spiels inzwischen. Der Stimmbruch ist Geschichte, die Pickel werden weniger und du weißt wie ein Deo funktioniert – und benutzt es auch! Deine Coolness-Level steigt spürbar. Die Mädchen-Welt wird immer interessanter und deine Freundschaften echter. 🤝' },
+          { max: 80, emoji: '💪', title: 'Fast auf der anderen Seite!', text: 'Krasse Leistung! Du siehst schon aus wie ein junger Erwachsener und wirst auch so behandelt – na ja, meistens. Dein Körper hat die meisten Überraschungen hinter sich. Was bleibt ist deine Persönlichkeit, die gerade in voller Blüte steht. Du wirst richtig gut! 🌟' },
+          { max: 90, emoji: '🔥', title: 'Letzter Abschnitt – du schaffst das!', text: 'Die Ziellinie ist in Sicht! Du hast das wildeste Abenteuer deines Lebens fast gemeistert. Dein Körper, dein Kopf, dein Style – alles findet seinen Platz. Du rasierst dich (manchmal), du riechst gut (meistens) und du weißt wer du bist. Ein echter Typ entsteht gerade. Wir sind stolz auf dich! 🏆' },
+          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTÄT ERREICHT!', text: 'ABSOLUTE LEGENDE! Du hast Level 100 geknackt! Deine Hormone sind auf Maximum, deine Energie unbegrenzt und deine Zukunft so hell dass du eine Sonnenbrille brauchst. Du bist offiziell der Pubertäts-Champion aller Zeiten 🏅. Die Welt gehört dir – geh raus und zeig was du drauf hast! LETS GOOOOO! 🎉🔥' }
         ]
       },
       girl: {
         ranges: [
-          { max: 15, emoji: '🌸', title: 'Noch im Prinzessinnen-Modus!', text: 'Deine Hormone machen erstmal Siesta. Du lebst noch sorglos in deiner Bubble – kein Drama, keine Achterbahn-Gefühle. Ruhig wie ein See... aber bald kommt der Wind! Genieß diese ruhige Phase, du kleines Strahlemädchen! 💫' },
-          { max: 30, emoji: '🌺', title: 'Die Verwandlung beginnt!', text: 'Irgendwas passiert da gerade... Dein Körper tippt dir auf die Schulter und sagt: "Hey, wir starten jetzt!" Manchmal bist du super happy, manchmal mega genervt – von allem. Das ist völlig normal! Du wirst gerade zu etwas ganz Besonderem! 🌟' },
-          { max: 50, emoji: '🎢', title: 'Achterbahn-Modus aktiv!', text: 'Ein Moment weinst du bei einem Werbeclip, im nächsten lachst du über alles. Willkommen bei der wildesten Achterbahn, die kein Freizeitpark der Welt hat! Dein Körper macht gerade das komplexeste Upgrade ever. Deine Gefühle sind wie ein Regenbogen – intensiv, bunt und wunderschön! 🌈' },
-          { max: 75, emoji: '💅', title: 'Fortgeschrittene Pubertierende!', text: 'Du checkst deinen Style, weißt was du willst und deine Meinung interessiert dich mehr als die deiner Eltern 😄. Friendships werden alles für dich und du entwickelst deine eigene Superkraft-Persönlichkeit. Deine Crew hält zusammen und du bist auf dem Weg, richtig abzurocken! 🎶' },
-          { max: 90, emoji: '✨', title: 'Fast vollständig verwandelt!', text: 'Wow, du hast die wilde Phase fast gemeistert! Du weißt wer du bist, was du willst und du kannst deine Gefühle schon viel besser steuern. Deine Freundschaften sind tief und bedeutungsvoll. Du bist dabei, zur stärksten Version von dir selbst zu werden. Die Welt ist vorbereitet – bist du es? 👑' },
-          { max: 100, emoji: '🦋', title: 'KOMPLETTE VERWANDLUNG!', text: 'WOAH! Level 100! Du bist ein Schmetterling, der gerade aus seiner Puppe schlüpft! 🦋 Du hast die Pubertät gemeistert wie eine absolute Queen! Deine Energie, dein Selbstbewusstsein, deine Persönlichkeit – alles on point! Die Welt wartet auf dich und du bist mehr als bereit. GO GET IT, QUEEN! 👑🎉' }
+          { max: 10, emoji: '😇', title: 'Noch im reinen Engel-Modus!', text: 'Deine Hormone machen gerade Urlaub auf den Malediven. Kein Drama, keine Gefühlsachterbahn, kein Stress – du lebst noch in deiner sorglosen Bubble. Genieß diese ruhige Zeit in vollen Zügen! Bald wird es bunter, wilder und aufregender als du dir vorstellen kannst. 🌈' },
+          { max: 20, emoji: '🌸', title: 'Ganz leise fängt es an...', text: 'Da ist so ein Gefühl... schwer zu beschreiben, aber irgendwas ist anders. Dein Körper flüstert dir zu: "Hey, wir starten bald!" Vielleicht ein kleines Stimmungshoch hier, ein leises Kribbeln dort. Du stehst am Anfang einer der aufregendsten Reisen deines Lebens! 💫' },
+          { max: 30, emoji: '🌺', title: 'Die Verwandlung beginnt!', text: 'Es geht los! Dein Körper schickt die ersten offiziellen Updates. Manchmal super happy, manchmal mega genervt – von deinen Eltern, deinen Geschwistern, dem Wetter. Das ist alles völlig normal! Deine Gefühle sind jetzt in HD statt SD. Intensiver, echter, lebendiger! 🌟' },
+          { max: 40, emoji: '🎭', title: 'Gefühls-Jongleurin!', text: 'Du jonglierst gerade mit mehr Gefühlen als ein Netflix-Drama Folgen hat. Heute Weltmeisterin, morgen Weltuntergang – manchmal beides gleichzeitig! Deine Freundschaften werden tiefer, deine Gespräche ehrlicher. Du entwickelst gerade deinen einzigartigen Superpower-Charakter! 🦸‍♀️' },
+          { max: 50, emoji: '🎢', title: 'Mittendrin auf der Achterbahn!', text: 'Willkommen im Herzstück der Pubertät! Du weinst bei Tiervideos, lachst über deine eigenen Witze und findest deine Eltern manchmal unerträglich. Das ist kein Fehler in deiner Programmierung – das ist das komplexeste Upgrade, das ein Mensch durchmachen kann. Und du rockst es! 🌈' },
+          { max: 60, emoji: '💅', title: 'Mittelstufe gemeistert!', text: 'Du kennst dich schon ganz gut aus in diesem Pubertäts-Game! Dein Style entwickelt sich, du weißt was du magst und was nicht. Deine Meinung zählt dir mehr als der anderer – und das ist genau richtig so! Deine Crew hält zusammen und du wirst zur Person, die du sein willst. 🎶' },
+          { max: 70, emoji: '✨', title: 'Pubertäts-Expertin!', text: 'Krasse Entwicklung! Du navigierst durch Gefühle, Freundschaften und Identitäts-Fragen wie eine absolute Profi. Deine Stärken kommen zum Vorschein und du weißt immer besser wer du bist. Manchmal nervt noch vieles – aber du weißt: das geht vorbei und macht dich stärker! 💎' },
+          { max: 80, emoji: '🌙', title: 'Fast auf der anderen Seite!', text: 'Respekt! Du hast das Gröbste hinter dir. Deine Gefühle sind stabiler, deine Freundschaften echter und dein Selbstbewusstsein wächst sichtbar. Du weißt wer du bist, was du willst und wer dir gut tut. Das ist nicht selbstverständlich – das ist eine echte Leistung! 🙌' },
+          { max: 90, emoji: '👑', title: 'Letzter Schritt zur Queen!', text: 'Die Ziellinie ist zum Greifen nah! Du hast die wildeste, intensivste, emotionalste Phase deines Lebens fast gemeistert. Dein Charakter ist gereift, deine Stimme lauter und deine Persönlichkeit unverwechselbar. Du weißt genau was du wert bist – und das ist sehr, sehr viel! 💪✨' },
+          { max: 100, emoji: '🦋', title: 'KOMPLETTE METAMORPHOSE!', text: 'WOAH! Level 100 erreicht! Du bist ein Schmetterling der gerade aus seiner Puppe schlüpft und die Welt mit offenen Armen empfängt! 🦋 Du hast die Pubertät gemeistert wie eine absolute Queen. Deine Energie, dein Selbstbewusstsein, deine Persönlichkeit – alles on point! Die Welt wartet auf dich. GO GET IT, QUEEN! 👑🎉' }
         ]
       }
     },
@@ -599,25 +612,33 @@
       labelPubertyLevel: 'Puberty Level',
       againBtn: '🔄 Check again!',
       footer: 'Totally scientific... well, almost 😅<br>© 2026 Puberty-Meter™ – All hormones reserved.',
-      levels: ['Baby Mode 👶','Beginner 🌱','Mid-Tier ⚡','Almost Pro 🔥','Ultra-Puberty 🚀'],
+      levels: ['Embryo 🥚','Baby Mode 👶','Beginner 🌱','Warming Up 🌤️','Mid-Tier ⚡','Chaos Pro 🔥','Veteran 😤','Almost There 🏁','Final Stretch 💨','ULTRA 🚀'],
       boy: {
         ranges: [
-          { max: 15, emoji: '😴', title: 'Still in full kid mode!', text: 'Your hormones are sleeping in late. You\'re living life carefree – no pimples, no voice-crack disasters. Enjoy this quiet time, because the storm is coming! 😂 You\'re like a rocket still on the launchpad – ignition coming soon!' },
-          { max: 30, emoji: '🌱', title: 'First signs detected!', text: 'Something feels different… A hair here, a pimple there. Your voice does weird things sometimes – hello, voice crack! Your body is downloading the biggest update of your life. Be patient, it\'s going to be epic!' },
-          { max: 50, emoji: '🤔', title: 'Right in the middle of chaos!', text: 'Welcome to the club of confusion! A hero today, a mess tomorrow. Your face is producing pimples at industrial scale and hair is growing everywhere. But hey – you\'re getting seriously cool! Your body is working overtime, and that\'s a feature, not a bug. 💪' },
-          { max: 75, emoji: '😤', title: 'Advanced puberty veteran!', text: 'You\'re a true puberty veteran! Your voice is mostly stable now – except when you get excited 😅. Sports are fun (or not), but you\'re getting noticeably stronger. The girl thing is getting more interesting... And your parents just don\'t understand you. Classic.' },
-          { max: 90, emoji: '🔥', title: 'Almost at the finish line!', text: 'Wow, you\'re almost done with puberty! You\'re growing into yourself and becoming the best version of you. Your friends respect you, you\'ve found your style – and sometimes you even shave! You\'re on your way to becoming a real dude. Proud of you! 🏆' },
-          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTY ACTIVATED!', text: 'LEGEND! You hit Level 100! Your hormones are on overdrive and you\'re an absolute powerhouse of energy, feelings and wild ideas. The world is yours! You\'re officially the Puberty Champion 🏅. Your future is so bright you need shades. LETS GOOO! 🎉' }
+          { max: 10, emoji: '😴', title: 'Puberty? Never heard of it!', text: 'Your hormones are on a beach vacation somewhere warm. No pimples, no voice cracks, no drama – you\'re living in pure paradise! Enjoy every second of it because soon puberty will tap you on the shoulder and say "Surprise!" 😂' },
+          { max: 20, emoji: '🥱', title: 'Almost zero activity detected!', text: 'Something is stirring... very slowly. Maybe one random hair? Or was that just lint? Your hormones are just starting to warm up their engines. Think of this as the calm before the most epic storm of your life! ⚡' },
+          { max: 30, emoji: '🌱', title: 'System booting up!', text: 'Houston, we have first signals! A pimple here, a weird body feeling there. Your voice occasionally does things it didn\'t do yesterday. This isn\'t a glitch – it\'s the biggest software update of your life! Patch notes incoming. 🔧' },
+          { max: 40, emoji: '🤨', title: 'Noticeably changing!', text: 'Now it\'s getting real! Your body grows faster than your pants can keep up with. Voice cracks are your constant companion – sometimes deep like a DJ, sometimes high like a chipmunk. Your friends are just as confused as you. You\'ve got this together! 💪' },
+          { max: 50, emoji: '🤯', title: 'Right in the eye of the storm!', text: 'Welcome to the epicenter of puberty! Your face is a pimple landscape, you suddenly sweat doing nothing, and the razor is already waiting in the drawer. But you know what? You\'re growing into a real person right now. This isn\'t chaos – this is transformation! 🦋' },
+          { max: 60, emoji: '😤', title: 'Advanced puberty player!', text: 'You\'re a real insider now! Your voice is getting more stable, your muscles more visible and your style is developing. Sometimes you want to scream – totally normal. Sometimes you\'re the coolest person in the room – also normal. You\'re navigating all this amazingly! 🎯' },
+          { max: 70, emoji: '🧠', title: 'Puberty veteran!', text: 'Respect! You know the rules of this game by now. Voice cracks are history, pimples are fewer, and you know how deodorant works – and actually use it! Your cool factor is rising noticeably. The world of girls gets more interesting and your friendships more real. 🤝' },
+          { max: 80, emoji: '💪', title: 'Almost on the other side!', text: 'Incredible progress! You already look like a young adult and get treated like one – well, mostly. Your body has left most surprises behind. What remains is your personality, currently in full bloom. You\'re getting really good at this! 🌟' },
+          { max: 90, emoji: '🔥', title: 'Final stretch – you got this!', text: 'The finish line is in sight! You\'ve almost conquered the wildest adventure of your life. Your body, your mind, your style – everything is finding its place. You shave (sometimes), you smell good (mostly) and you know who you are. A real dude is emerging. We\'re proud of you! 🏆' },
+          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTY UNLOCKED!', text: 'ABSOLUTE LEGEND! You cracked Level 100! Your hormones are maxed out, your energy is unlimited and your future is so bright you need sunglasses. You are officially the Puberty Champion of all time 🏅. The world belongs to you – go out there and show what you\'ve got! LETS GOOOOO! 🎉🔥' }
         ]
       },
       girl: {
         ranges: [
-          { max: 15, emoji: '🌸', title: 'Still in princess mode!', text: 'Your hormones are taking a little siesta. You\'re living worry-free in your bubble – no drama, no emotional rollercoasters. Calm as a lake... but the wind is coming! Enjoy this peaceful phase, you little ray of sunshine! 💫' },
-          { max: 30, emoji: '🌺', title: 'The transformation begins!', text: 'Something is happening... Your body is tapping you on the shoulder saying: "Hey, we\'re starting now!" Sometimes you feel super happy, sometimes mega annoyed – by everything. That\'s totally normal! You\'re becoming something truly special! 🌟' },
-          { max: 50, emoji: '🎢', title: 'Rollercoaster mode activated!', text: 'One minute you\'re crying at a commercial, the next you\'re laughing at everything. Welcome to the wildest rollercoaster no theme park could ever build! Your body is doing the most complex upgrade ever. Your feelings are like a rainbow – intense, colorful and absolutely beautiful! 🌈' },
-          { max: 75, emoji: '💅', title: 'Advanced puberty player!', text: 'You\'re checking your style, you know what you want, and your own opinion matters more than your parents\' 😄. Friendships are becoming everything to you and you\'re developing your own superpower personality. Your crew sticks together and you\'re on your way to absolutely slaying! 🎶' },
-          { max: 90, emoji: '✨', title: 'Almost fully transformed!', text: 'Wow, you\'ve almost mastered the wild phase! You know who you are, what you want, and you can manage your feelings so much better now. Your friendships are deep and meaningful. You\'re becoming the strongest version of yourself. The world is prepared – are you? 👑' },
-          { max: 100, emoji: '🦋', title: 'COMPLETE TRANSFORMATION!', text: 'WOAH! Level 100! You\'re a butterfly emerging from its cocoon! 🦋 You\'ve conquered puberty like an absolute Queen! Your energy, your confidence, your personality – all on point! The world is waiting for you and you are more than ready. GO GET IT, QUEEN! 👑🎉' }
+          { max: 10, emoji: '😇', title: 'Still in pure angel mode!', text: 'Your hormones are on vacation in the Maldives right now. No drama, no emotional rollercoasters, no stress – you\'re living in your carefree bubble. Enjoy this peaceful time to the fullest! Soon it\'ll be more colorful, wilder and more exciting than you can imagine. 🌈' },
+          { max: 20, emoji: '🌸', title: 'Very quietly, it begins...', text: 'There\'s a feeling... hard to describe, but something is different. Your body is whispering: "Hey, we\'re starting soon!" Maybe a little mood boost here, a quiet tingle there. You\'re at the beginning of one of the most exciting journeys of your life! 💫' },
+          { max: 30, emoji: '🌺', title: 'The transformation begins!', text: 'Here we go! Your body is sending the first official updates. Sometimes super happy, sometimes mega annoyed – by your parents, your siblings, the weather. All completely normal! Your feelings are now in HD instead of SD. More intense, more real, more alive! 🌟' },
+          { max: 40, emoji: '🎭', title: 'Feelings juggler!', text: 'You\'re currently juggling more feelings than a Netflix drama has episodes. Today world champion, tomorrow the world is ending – sometimes both at once! Your friendships are getting deeper, your conversations more honest. You\'re developing your unique superpower character! 🦸‍♀️' },
+          { max: 50, emoji: '🎢', title: 'Right in the middle of the rollercoaster!', text: 'Welcome to the heart of puberty! You cry at animal videos, laugh at your own jokes and find your parents unbearable sometimes. This isn\'t a bug in your programming – it\'s the most complex upgrade any human can go through. And you\'re absolutely rocking it! 🌈' },
+          { max: 60, emoji: '💅', title: 'Mid-level mastered!', text: 'You know your way around this puberty game! Your style is developing, you know what you like and what you don\'t. Your opinion matters more to you than anyone else\'s – and that\'s exactly right! Your crew sticks together and you\'re becoming the person you want to be. 🎶' },
+          { max: 70, emoji: '✨', title: 'Puberty expert!', text: 'Incredible development! You navigate feelings, friendships and identity questions like an absolute pro. Your strengths are showing and you know better and better who you are. Things still bother you sometimes – but you know it\'ll pass and make you stronger! 💎' },
+          { max: 80, emoji: '🌙', title: 'Almost on the other side!', text: 'Respect! You\'ve left the hardest part behind. Your feelings are more stable, your friendships more real and your confidence visibly growing. You know who you are, what you want and who\'s good for you. That\'s not a given – that\'s a real achievement! 🙌' },
+          { max: 90, emoji: '👑', title: 'Last step to Queen!', text: 'The finish line is within reach! You\'ve almost conquered the wildest, most intense, most emotional phase of your life. Your character has matured, your voice is louder and your personality unmistakable. You know exactly what you\'re worth – and that\'s a lot! 💪✨' },
+          { max: 100, emoji: '🦋', title: 'COMPLETE METAMORPHOSIS!', text: 'WOAH! Level 100 reached! You\'re a butterfly emerging from your cocoon and embracing the world with open arms! 🦋 You\'ve conquered puberty like an absolute Queen. Your energy, your confidence, your personality – all on point! The world is waiting for you. GO GET IT, QUEEN! 👑🎉' }
         ]
       }
     }
@@ -651,11 +672,16 @@
   }
 
   function getLevelIndex(score) {
-    if (score <= 15) return 0;
-    if (score <= 30) return 1;
-    if (score <= 60) return 2;
-    if (score <= 80) return 3;
-    return 4;
+    if (score <= 10) return 0;
+    if (score <= 20) return 1;
+    if (score <= 30) return 2;
+    if (score <= 40) return 3;
+    if (score <= 50) return 4;
+    if (score <= 60) return 5;
+    if (score <= 70) return 6;
+    if (score <= 80) return 7;
+    if (score <= 90) return 8;
+    return 9;
   }
 
   function getRange(score, gender) {
