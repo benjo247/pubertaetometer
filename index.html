@@ -542,6 +542,30 @@
   </div>
 
   <div class="footer" id="footer-text">Rein wissenschaftlich... naja, fast 😅<br>© 2025 Pubertätometer™ – All hormones reserved.</div>
+  <div style="text-align:center; margin-top:8px;">
+    <a href="#" onclick="document.getElementById('impressum-modal').style.display='flex'; return false;" style="color:rgba(136,138,170,.4); font-size:12px; text-decoration:underline;">Impressum</a>
+  </div>
+</div>
+
+<!-- IMPRESSUM MODAL -->
+<div id="impressum-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.75); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#13131f; border:1px solid rgba(255,255,255,.1); border-radius:20px; padding:28px 24px; max-width:420px; width:100%; position:relative; max-height:80vh; overflow-y:auto;">
+    <button onclick="document.getElementById('impressum-modal').style.display='none'" style="position:absolute; top:16px; right:16px; background:rgba(255,255,255,.08); border:none; color:#888aaa; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center;">✕</button>
+    <h2 style="font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#f0f0f8; margin-bottom:20px;">Impressum</h2>
+    <p style="font-size:14px; color:#888aaa; line-height:1.8;">
+      <strong style="color:#f0f0f8;">Angaben gemäß § 5 TMG</strong><br><br>
+      Vicoli<br>
+      Benjamin Linge<br>
+      Nikolaus-Otto-Ring 21<br>
+      34225 Baunatal<br><br>
+      <strong style="color:#f0f0f8;">Kontakt</strong><br><br>
+      E-Mail: <a href="mailto:hallo@vicoli.de" style="color:#00f5d4; text-decoration:none;">hallo@vicoli.de</a><br><br>
+      <strong style="color:#f0f0f8;">Haftungsausschluss</strong><br><br>
+      Diese Website dient ausschließlich Unterhaltungszwecken. Alle angezeigten Ergebnisse sind zufällig generiert und haben keinen wissenschaftlichen Anspruch.<br><br>
+      <strong style="color:#f0f0f8;">Datenschutz</strong><br><br>
+      Es werden ausschließlich anonyme Nutzungsdaten gespeichert (Score, Geschlecht, Sprache). Es werden keine personenbezogenen Daten erhoben.
+    </p>
+  </div>
 </div>
 
 <script>
@@ -582,8 +606,8 @@
           { max: 60, emoji: '😤', title: 'Fortgeschrittener Pubertäler!', text: 'Du bist jetzt ein echter Insider! Deine Stimme wird stabiler, deine Muskeln sichtbarer und dein Style entwickelt sich. Manchmal willst du deine Eltern an die Wand schreien – völlig normal. Manchmal bist du der Coolste im Raum – auch normal. Du navigierst das alles erstaunlich gut! 🎯' },
           { max: 70, emoji: '🧠', title: 'Pubertäts-Veteran!', text: 'Respekt! Du kennst die Regeln des Spiels inzwischen. Der Stimmbruch ist Geschichte, die Pickel werden weniger und du weißt wie ein Deo funktioniert – und benutzt es auch! Deine Coolness-Level steigt spürbar. Die Mädchen-Welt wird immer interessanter und deine Freundschaften echter. 🤝' },
           { max: 80, emoji: '💪', title: 'Fast auf der anderen Seite!', text: 'Krasse Leistung! Du siehst schon aus wie ein junger Erwachsener und wirst auch so behandelt – na ja, meistens. Dein Körper hat die meisten Überraschungen hinter sich. Was bleibt ist deine Persönlichkeit, die gerade in voller Blüte steht. Du wirst richtig gut! 🌟' },
-          { max: 90, emoji: '🔥', title: 'Letzter Abschnitt – du schaffst das!', text: 'Die Ziellinie ist in Sicht! Du hast das wildeste Abenteuer deines Lebens fast gemeistert. Dein Körper, dein Kopf, dein Style – alles findet seinen Platz. Du rasierst dich (manchmal), du riechst gut (meistens) und du weißt wer du bist. Ein echter Typ entsteht gerade. Wir sind stolz auf dich! 🏆' },
-          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTÄT ERREICHT!', text: 'ABSOLUTE LEGENDE! Du hast Level 100 geknackt! Deine Hormone sind auf Maximum, deine Energie unbegrenzt und deine Zukunft so hell dass du eine Sonnenbrille brauchst. Du bist offiziell der Pubertäts-Champion aller Zeiten 🏅. Die Welt gehört dir – geh raus und zeig was du drauf hast! LETS GOOOOO! 🎉🔥' }
+          { max: 99, emoji: '🔥', title: 'Letzter Schritt – du schaffst das!', text: 'Die Ziellinie ist in Sicht! Du hast das wildeste Abenteuer deines Lebens fast gemeistert. Dein Körper, dein Kopf, dein Style – alles findet seinen Platz. Du rasierst dich (manchmal), du riechst gut (meistens) und du weißt wer du bist. Ein echter Typ entsteht gerade. Wir sind stolz auf dich! 🏆' },
+          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTÄT ERREICHT!', text: 'ABSOLUTE LEGENDE! Du hast die heilige 100 geknackt – das schafft kaum jemand! Deine Hormone sind auf Maximum, deine Energie unbegrenzt und deine Zukunft so hell dass du eine Sonnenbrille brauchst. Du bist offiziell der Pubertäts-Champion aller Zeiten 🏅. Die Welt gehört dir – geh raus und zeig was du drauf hast! LETS GOOOOO! 🎉🔥' }
         ]
       },
       girl: {
@@ -596,8 +620,8 @@
           { max: 60, emoji: '💅', title: 'Mittelstufe gemeistert!', text: 'Du kennst dich schon ganz gut aus in diesem Pubertäts-Game! Dein Style entwickelt sich, du weißt was du magst und was nicht. Deine Meinung zählt dir mehr als der anderer – und das ist genau richtig so! Deine Crew hält zusammen und du wirst zur Person, die du sein willst. 🎶' },
           { max: 70, emoji: '✨', title: 'Pubertäts-Expertin!', text: 'Krasse Entwicklung! Du navigierst durch Gefühle, Freundschaften und Identitäts-Fragen wie eine absolute Profi. Deine Stärken kommen zum Vorschein und du weißt immer besser wer du bist. Manchmal nervt noch vieles – aber du weißt: das geht vorbei und macht dich stärker! 💎' },
           { max: 80, emoji: '🌙', title: 'Fast auf der anderen Seite!', text: 'Respekt! Du hast das Gröbste hinter dir. Deine Gefühle sind stabiler, deine Freundschaften echter und dein Selbstbewusstsein wächst sichtbar. Du weißt wer du bist, was du willst und wer dir gut tut. Das ist nicht selbstverständlich – das ist eine echte Leistung! 🙌' },
-          { max: 90, emoji: '👑', title: 'Letzter Schritt zur Queen!', text: 'Die Ziellinie ist zum Greifen nah! Du hast die wildeste, intensivste, emotionalste Phase deines Lebens fast gemeistert. Dein Charakter ist gereift, deine Stimme lauter und deine Persönlichkeit unverwechselbar. Du weißt genau was du wert bist – und das ist sehr, sehr viel! 💪✨' },
-          { max: 100, emoji: '🦋', title: 'KOMPLETTE METAMORPHOSE!', text: 'WOAH! Level 100 erreicht! Du bist ein Schmetterling der gerade aus seiner Puppe schlüpft und die Welt mit offenen Armen empfängt! 🦋 Du hast die Pubertät gemeistert wie eine absolute Queen. Deine Energie, dein Selbstbewusstsein, deine Persönlichkeit – alles on point! Die Welt wartet auf dich. GO GET IT, QUEEN! 👑🎉' }
+          { max: 99, emoji: '👑', title: 'Letzter Schritt zur Queen!', text: 'Die Ziellinie ist zum Greifen nah! Du hast die wildeste, intensivste, emotionalste Phase deines Lebens fast gemeistert. Dein Charakter ist gereift, deine Stimme lauter und deine Persönlichkeit unverwechselbar. Du weißt genau was du wert bist – und das ist sehr, sehr viel! 💪✨' },
+          { max: 100, emoji: '🦋', title: 'KOMPLETTE METAMORPHOSE!', text: 'WOAH! Die perfekte 100! Das ist ultra-selten – du bist ein absolutes Ausnahmetalent der Pubertät! 🦋 Du hast die Pubertät gemeistert wie eine absolute Queen. Deine Energie, dein Selbstbewusstsein, deine Persönlichkeit – alles on point! Die Welt wartet auf dich und du bist mehr als bereit. GO GET IT, QUEEN! 👑🎉🔥' }
         ]
       }
     },
@@ -623,8 +647,8 @@
           { max: 60, emoji: '😤', title: 'Advanced puberty player!', text: 'You\'re a real insider now! Your voice is getting more stable, your muscles more visible and your style is developing. Sometimes you want to scream – totally normal. Sometimes you\'re the coolest person in the room – also normal. You\'re navigating all this amazingly! 🎯' },
           { max: 70, emoji: '🧠', title: 'Puberty veteran!', text: 'Respect! You know the rules of this game by now. Voice cracks are history, pimples are fewer, and you know how deodorant works – and actually use it! Your cool factor is rising noticeably. The world of girls gets more interesting and your friendships more real. 🤝' },
           { max: 80, emoji: '💪', title: 'Almost on the other side!', text: 'Incredible progress! You already look like a young adult and get treated like one – well, mostly. Your body has left most surprises behind. What remains is your personality, currently in full bloom. You\'re getting really good at this! 🌟' },
-          { max: 90, emoji: '🔥', title: 'Final stretch – you got this!', text: 'The finish line is in sight! You\'ve almost conquered the wildest adventure of your life. Your body, your mind, your style – everything is finding its place. You shave (sometimes), you smell good (mostly) and you know who you are. A real dude is emerging. We\'re proud of you! 🏆' },
-          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTY UNLOCKED!', text: 'ABSOLUTE LEGEND! You cracked Level 100! Your hormones are maxed out, your energy is unlimited and your future is so bright you need sunglasses. You are officially the Puberty Champion of all time 🏅. The world belongs to you – go out there and show what you\'ve got! LETS GOOOOO! 🎉🔥' }
+          { max: 99, emoji: '🔥', title: 'Final stretch – you got this!', text: 'The finish line is in sight! You\'ve almost conquered the wildest adventure of your life. Your body, your mind, your style – everything is finding its place. You shave (sometimes), you smell good (mostly) and you know who you are. A real dude is emerging. We\'re proud of you! 🏆' },
+          { max: 100, emoji: '🚀', title: 'ULTRA-PUBERTY UNLOCKED!', text: 'ABSOLUTE LEGEND! You hit the holy 100 – barely anyone gets there! Your hormones are maxed out, your energy is unlimited and your future is so bright you need sunglasses. You are officially the Puberty Champion of all time 🏅. The world belongs to you – go out there and show what you\'ve got! LETS GOOOOO! 🎉🔥' }
         ]
       },
       girl: {
@@ -637,8 +661,8 @@
           { max: 60, emoji: '💅', title: 'Mid-level mastered!', text: 'You know your way around this puberty game! Your style is developing, you know what you like and what you don\'t. Your opinion matters more to you than anyone else\'s – and that\'s exactly right! Your crew sticks together and you\'re becoming the person you want to be. 🎶' },
           { max: 70, emoji: '✨', title: 'Puberty expert!', text: 'Incredible development! You navigate feelings, friendships and identity questions like an absolute pro. Your strengths are showing and you know better and better who you are. Things still bother you sometimes – but you know it\'ll pass and make you stronger! 💎' },
           { max: 80, emoji: '🌙', title: 'Almost on the other side!', text: 'Respect! You\'ve left the hardest part behind. Your feelings are more stable, your friendships more real and your confidence visibly growing. You know who you are, what you want and who\'s good for you. That\'s not a given – that\'s a real achievement! 🙌' },
-          { max: 90, emoji: '👑', title: 'Last step to Queen!', text: 'The finish line is within reach! You\'ve almost conquered the wildest, most intense, most emotional phase of your life. Your character has matured, your voice is louder and your personality unmistakable. You know exactly what you\'re worth – and that\'s a lot! 💪✨' },
-          { max: 100, emoji: '🦋', title: 'COMPLETE METAMORPHOSIS!', text: 'WOAH! Level 100 reached! You\'re a butterfly emerging from your cocoon and embracing the world with open arms! 🦋 You\'ve conquered puberty like an absolute Queen. Your energy, your confidence, your personality – all on point! The world is waiting for you. GO GET IT, QUEEN! 👑🎉' }
+          { max: 99, emoji: '👑', title: 'Last step to Queen!', text: 'The finish line is within reach! You\'ve almost conquered the wildest, most intense, most emotional phase of your life. Your character has matured, your voice is louder and your personality unmistakable. You know exactly what you\'re worth – and that\'s a lot! 💪✨' },
+          { max: 100, emoji: '🦋', title: 'COMPLETE METAMORPHOSIS!', text: 'WOAH! The perfect 100 – this is ultra-rare, you absolute unicorn! 🦋 You\'ve conquered puberty like the Queen you are. Your energy, your confidence, your personality – all on point and fully unlocked! The world has been waiting for exactly you. GO GET IT, QUEEN! 👑🎉🔥' }
         ]
       }
     }
@@ -798,31 +822,48 @@
 
   async function shareResult() {
     const btn = document.getElementById('share-btn');
+    const score = document.getElementById('sc-score').textContent;
+    const shareText = `Ich stecke zu ${score}% in der Pubertät 🔥 Und du?`;
+    const shareUrl = 'https://pubertaetometer.vercel.app';
+
     btn.textContent = '⏳ Wird vorbereitet...';
     btn.disabled = true;
+
     try {
       const card = document.getElementById('story-card-render');
-      const canvas = await html2canvas(card, { scale: 2, useCORS: true, backgroundColor: '#0a0a12' });
+      const canvas = await Promise.race([
+        html2canvas(card, { scale: 2, useCORS: true, backgroundColor: '#0a0a12', logging: false }),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 5000))
+      ]);
+
       canvas.toBlob(async (blob) => {
+        if (!blob) throw new Error('no blob');
         const file = new File([blob], 'pubertaetometer.png', { type: 'image/png' });
-        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-          await navigator.share({
-            files: [file],
-            title: 'Pubertätometer',
-            text: `Ich stecke zu ${document.getElementById('sc-score').textContent}% in der Pubertät 🔥 Und du?`,
-            url: 'https://pubertaetometer.vercel.app'
-          });
-        } else {
-          // Fallback: download image
-          const a = document.createElement('a');
-          a.href = canvas.toDataURL('image/png');
-          a.download = 'pubertaetometer.png';
-          a.click();
+        try {
+          if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({ files: [file], title: 'Pubertätometer', text: shareText, url: shareUrl });
+          } else if (navigator.share) {
+            await navigator.share({ title: 'Pubertätometer', text: shareText, url: shareUrl });
+          } else {
+            // Fallback: download image
+            const a = document.createElement('a');
+            a.href = canvas.toDataURL('image/png');
+            a.download = 'pubertaetometer.png';
+            a.click();
+          }
+        } catch(e) {
+          // User cancelled or error – just reset
         }
         btn.textContent = '↗ Ergebnis teilen';
         btn.disabled = false;
       }, 'image/png');
     } catch(e) {
+      // html2canvas failed – share text+url only
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: 'Pubertätometer', text: shareText, url: shareUrl });
+        }
+      } catch(e2) {}
       btn.textContent = '↗ Ergebnis teilen';
       btn.disabled = false;
     }
